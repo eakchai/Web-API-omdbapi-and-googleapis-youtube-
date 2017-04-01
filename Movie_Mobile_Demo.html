@@ -12,47 +12,6 @@
     <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script>
 	<link rel="stylesheet" href="custom.css">
 
-
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-            $('#go').click(function(event) {
-                var query = $('#query').val();
-
-                $.getJSON('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + encodeURIComponent(query) + '&orderby=relevance&max-results=10&category=music&key=AIzaSyCDSUsNu8Xdp6dL95Qnu62seqaq8Hzgkl8', function(response) {
-                    console.log(response);
-
-                    for(i=0; i < response.items.length; i++) {
-                        $('#video-list').append('<li id="' +response.items[i].id.videoId + '">' + response.items[i].snippet.title + '</li>')
-                        };
-                        
-                    playVideo($('#video-list li:first').attr('id'));
-                    
-                    $('#video-list li').click(
-            			function(event) {
-            				console.log("click");
-                    		//event.preventDefault();
-                    		playVideo($(this).attr('id'));
-            			}
-            		);
-                });
-
-            });
-            
-            
-
-        });
-
-        playVideo = function(videoId) {
-        	var path = '<iframe id="youtube-player" type="text/html" width="420" height="315" src="http://www.youtube.com/embed/' +videoId + '?autoplay=1"></iframe>';
-            $('#player-content').html(path);
-
-        }
-
-
-
-    </script>
-
     <script type="text/javascript">
 
         $(document).ready(function() {
@@ -84,7 +43,7 @@
         });
 
         playVideo = function(videoId) {
-        	var path = '<iframe id="youtube-player" type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' +videoId + '?autoplay=1"></iframe>';
+        	var path = '<iframe id="youtube-player" type="text/html"  width="100%" height="auto"   src="http://www.youtube.com/embed/' +videoId + '?autoplay=1"></iframe>';
             $('#player-content').html(path);
 
         }
@@ -96,74 +55,74 @@
 
 <body>
 
-<div id="grad1">
+		<div id="grad1">
 
-	 	<div data-role="page" data-theme="b" id="splash" >
-        <div class="splash"></div>
-    </div>
+		 	<div data-role="page" data-theme="b" id="splash" >
+	        <div class="splash"></div>
+	    </div>
 
-    <div data-role="page" id="movie-list">
-		    <div data-role="header">
-		    <div id="branding"  >
+	    <div data-role="page" id="movie-list">
+			    <div data-role="header">
+			    <div id="branding"  >
 
-		    <h1>Movies List</h1>
-		    </div><!-- /header -->
-		    </div><!-- /branding -->
+			    <h1>Movies List</h1>
+			    </div><!-- /header -->
+			    </div><!-- /branding -->
 
-		    <div data-role="content">
-		      <input type="search" name="keyword" id="search" value="" placeholder="search movie here" >
-
-
-					<input type="button" onclick="searchItems($('#search').val())" data-theme="b"  value="Search">
-					<ul data-role="listview" data-inset="true" id="result"></ul>
-					
-
-					<input type="button" value="Search Clip" id="searchClip"/>
-					<div id="player-content"></div>
-					<ul id="video-list">
-	
-		    </div><!-- /content -->
+			    <div data-role="content">
+			      <input type="search" name="keyword" id="search" value="" placeholder="search movie here" >
 
 
-
-
-		<!--<script type="text/javascript" src="http://files.main.bloggerstop.net/uploads/3/0/2/5/3025338/snowstorm.js" /></script>-->
-
-
-		   
-    <!-- /page -->
-		<script type="text/javascript">
-				var globalID;
-				$(function() {
-            console.log('setTimeout');
-            setTimeout(hideSplash, 2000);
-        });
-
-
-        function hideSplash() {
-            $.mobile.changePage("#movie-list", "fade");
-        }
-
-
-				function searchItems(keyword){
-					
-						console.log(keyword);
+						<input type="button" onclick="searchItems($('#search').val())" data-theme="b"  value="Search">
+						<ul data-role="listview" data-inset="true" id="result"></ul>
 						
-						$.getJSON('http://www.omdbapi.com/?s=' + keyword, function(data){
-								 $('#result').empty();
-								 $.each(data["Search"], function(index, element) {
-				            var url = "#movie-detail";
-										var img = element.Poster;
-				            var listitem = '<li data-icon="info" id = "' + element.imdbID +'"><a href="' + url + '" data-transition="slide"><img src="'+ img +'" height="80" width="80"><h1>' + element.Title + '</h1><p>Year ' + element.Year + '</p></a></li>';
-										$('#result').append(listitem);
-				            $('#result').listview('refresh');
-								});
-							}
-						);
-				}
 
-		</script>
-	</div>
+						<input type="button" value="Search Clip" data-theme="b" id="searchClip"/>
+						<div id="player-content"></div>
+						<ul id="video-list">
+		
+			    </div><!-- /content -->
+
+
+
+
+			<!--<script type="text/javascript" src="http://files.main.bloggerstop.net/uploads/3/0/2/5/3025338/snowstorm.js" /></script>-->
+
+
+			   
+	    <!-- /page -->
+			<script type="text/javascript">
+					var globalID;
+					$(function() {
+	            console.log('setTimeout');
+	            setTimeout(hideSplash, 2000);
+	        });
+
+
+	        function hideSplash() {
+	            $.mobile.changePage("#movie-list", "fade");
+	        }
+
+
+					function searchItems(keyword){
+						
+							console.log(keyword);
+							
+							$.getJSON('http://www.omdbapi.com/?s=' + keyword, function(data){
+									 $('#result').empty();
+									 $.each(data["Search"], function(index, element) {
+					            var url = "#movie-detail";
+											var img = element.Poster;
+					            var listitem = '<li data-icon="info" id = "' + element.imdbID +'"><a href="' + url + '" data-transition="slide"><img src="'+ img +'" height="80" width="80"><h1>' + element.Title + '</h1><p>Year ' + element.Year + '</p></a></li>';
+											$('#result').append(listitem);
+					            $('#result').listview('refresh');
+									});
+								}
+							);
+					}
+
+			</script>
+		</div>
 
     <div data-role="page" id="movie-detail">
 		    <div data-role="header">
