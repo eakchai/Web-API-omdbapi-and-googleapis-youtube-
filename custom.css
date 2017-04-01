@@ -1,16 +1,33 @@
 
 #branding{
-background:url(images/logo.png) no-repeat;
+			background:url(images/logo.png) no-repeat;
 
-width:300px;
-height:110px;
-text-indent:-999px;
-font-size:0px;
-margin:10px auto 0 auto;
-
-
-/*border-bottom:1px solid rgba(65, 38, 37, 0.6);*/
+			width:300px;
+			height:110px;
+			text-indent:-999px;
+			font-size:0px;
+			margin:10px auto 0 auto;
 }
+
+#video-list {
+            float: left;
+            width: 50%;
+            font-size: 13px;
+            margin-top: 10px;
+}
+
+#video-list li{
+            cursor: pointer;
+}
+
+#player-content{
+            float: left;
+            width: 45%;
+}
+
+
+
+
 
 
 

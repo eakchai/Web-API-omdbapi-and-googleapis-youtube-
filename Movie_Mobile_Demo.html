@@ -12,23 +12,6 @@
     <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script>
 	<link rel="stylesheet" href="custom.css">
 
-	<style>
-        #video-list {
-            float: left;
-            width: 50%;
-            font-size: 13px;
-            margin-top: 10px;
-        }
-
-        #video-list li{
-            cursor: pointer;
-        }
-
-        #player-content{
-            float: left;
-            width: 45%;
-        }
-    </style>
 
     <script type="text/javascript">
 
@@ -68,23 +51,7 @@
 
 
 
-    </script><style>
-        #video-list {
-            float: left;
-            width: 50%;
-            font-size: 13px;
-            margin-top: 10px;
-        }
-
-        #video-list li{
-            cursor: pointer;
-        }
-
-        #player-content{
-            float: left;
-            width: 45%;
-        }
-    </style>
+    </script>
 
     <script type="text/javascript">
 
@@ -117,11 +84,8 @@
         });
 
         playVideo = function(videoId) {
-        	var path = '<iframe id="youtube-player" type="text/html" width="420" height="315" src="http://www.youtube.com/embed/' +videoId + '?autoplay=1"></iframe>';
+        	var path = '<iframe id="youtube-player" type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' +videoId + '?autoplay=1"></iframe>';
             $('#player-content').html(path);
-            
-
-
 
         }
 
